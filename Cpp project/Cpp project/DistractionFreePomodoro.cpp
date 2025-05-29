@@ -1,4 +1,5 @@
-﻿#include "DistractionFreePomodoro.h"
+﻿
+#include "DistractionFreePomodoro.h"
 #include<Windows.h>
 #include <iostream>
 #include <fstream>
@@ -11,7 +12,7 @@ DistractionFreePomodoro::DistractionFreePomodoro(int8_t focusDuration, int8_t sh
 }
 
 bool DistractionFreePomodoro::IsAppRunning(const std::string& appName) {
-	//get the list of running tasks in a text file
+	//get the list of running apps in a text file
 	system("tasklist > tasks.txt");
 
 	std::ifstream file("tasks.txt");

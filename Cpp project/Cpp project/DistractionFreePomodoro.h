@@ -1,3 +1,4 @@
+
 #pragma once
 #include <iostream>
 #include <vector>
@@ -6,6 +7,7 @@
 
 class DistractionFreePomodoro : public Pomodoro {
 private:
+	//takes list of distracting apps as input 
 	std::vector<std::string> blockedApps;
 	bool isActive;
 

@@ -30,12 +30,11 @@ int main()
 	//List of distracting apps
 	std::vector<std::string> apps = { "WhatsApp.exe", "steam.exe" };
 	// 25 min focus, 5 min short break, 15 min long break
-	DistractionFreePomodoro pomodoro(stoi(focusDuration),stoi(shortBreakDuration),stoi(longBreakDuration),apps);
+	Timer* timer = new DistractionFreePomodoro (stoi(focusDuration),stoi(shortBreakDuration),stoi(longBreakDuration),apps);
 	char choice;
 	//asking user if they want to start another session
 	do {
-
-		pomodoro.start();
+		timer->start(); //start the timer
 		std::cout << "Do you want to start another session? (y/n): ";
 		std::cin >> choice;
 		if (choice	 != 'y' && choice != 'Y') {
@@ -43,6 +42,6 @@ int main()
 		}
 	} while (choice == 'y' || choice == 'Y');
 	std::cout << "Thank you for using the Pomodoro Timer!\n";
-	
+	delete timer; //clean up memory
 }
 
