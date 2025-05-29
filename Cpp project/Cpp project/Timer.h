@@ -1,25 +1,25 @@
+#ifndef TIMER_H
+#define TIMER_H
+#pragma once
 #include <iostream>
 #include <chrono>
 class Timer  // abstract base class
 {
 protected: 
-	int16_t duration;
 	bool isRunning;
 
 public:   
-	Timer(int16_t duration	) : 
-		duration(duration) {}
-
+	Timer() : isRunning(false) {
+		std::cout << "Timer created.\n";
+	}
 	virtual ~Timer() {
 		std::cout << "Timer destroyed.\n";
 	}
-
+	//virtual fuctions
 	virtual void start() = 0;
+	virtual void stop() = 0;
 
-	int16_t getDuration() const { return duration; }
-	void setDuration(int16_t newDuration) { duration = newDuration; }
 	bool isTimerRunning() const { return isRunning; }
 	
 };
-
-
+#endif // TIMER_H

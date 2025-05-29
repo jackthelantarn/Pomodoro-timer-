@@ -1,3 +1,6 @@
+#ifndef POMODORO_H
+#define POMODORO_H
+#pragma once
 #include "timer.h"
 #include <chrono>
 #include <iostream>
@@ -13,8 +16,9 @@ public:
 
 	~Pomodoro() {}
 
-	void start() override;
-	void runSession(int8_t duration, std::string lable) ;
+	void start() override; //virtual fuction from base class Timer
+	void stop() override; //override stop function from base class Timer
+	virtual void runSession(int8_t duration, std::string label) ;
 	void startShortBreak();
 	void startLongBreak();
 
@@ -23,4 +27,4 @@ public:
 	int8_t getLongBreakDuration() const { return LongBreakDuration; }
 	int8_t getSetsCount() const { return SetsCount; }
 };
-
+#endif // POMODORO_H
