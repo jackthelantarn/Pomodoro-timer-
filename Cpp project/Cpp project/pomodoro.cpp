@@ -11,18 +11,18 @@ void Pomodoro::start() {
 	std::cout << "\n--- Starting Pomodoro Session " << (SetsCount + 1) << " ---\n";
 	//run focus session
 	runSession(FocusDuration, "Focus"); 
-	PlaySound(TEXT("Digital alarm clock sound.mp3"), NULL, SND_FILENAME | SND_ASYNC); //play sound when focus session is completed
+	PlaySound(TEXT("Digital alarm clock sound.wav"), NULL, SND_FILENAME | SND_ASYNC); //play sound when focus session is completed
 	//counts the number of sets completed
 	SetsCount++;    
 	//if less than 4 sets completed, start short break
 	if (SetsCount < 4) { 
 		startShortBreak();
-		PlaySound(TEXT("Digital alarm clock sound.mp3"), NULL, SND_FILENAME | SND_ASYNC);; //play sound when short break session is completed
+		PlaySound(TEXT("Digital alarm clock sound.wav"), NULL, SND_FILENAME | SND_ASYNC);; //play sound when short break session is completed
 	}
 	//if 4 sets completed, start long break
 	else {
 		startLongBreak();	
-		PlaySound(TEXT("Digital alarm clock sound.mp3"), NULL, SND_FILENAME | SND_ASYNC);; //play sound when long break session is completed
+		PlaySound(TEXT("Digital alarm clock sound.wav"), NULL, SND_FILENAME | SND_ASYNC);; //play sound when long break session is completed
 		SetsCount = 0; 
 	}
 
