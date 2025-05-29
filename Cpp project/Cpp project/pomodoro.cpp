@@ -1,33 +1,43 @@
 #include "pomodoro.h"
 
 Pomodoro::Pomodoro(int8_t focusDuration, int8_t shortBreakDuration, int8_t longBreakDuration)
-	: Timer(focusDuration), FocusDuration(focusDuration), ShortBreakDuration(shortBreakDuration),
+	:FocusDuration(focusDuration), ShortBreakDuration(shortBreakDuration),
 	LongBreakDuration(longBreakDuration), SetsCount(0) {
 }
 
-
+//start fuction from base class Timer implemented here
 void Pomodoro::start() {
 	std::cout << "\n--- Starting Pomodoro Session " << (SetsCount + 1) << " ---\n";
-	runSession(FocusDuration, "Focus");
-	SetsCount++;
-	if (SetsCount < 4) {
+	//run focus session
+	runSession(FocusDuration, "Focus"); 
+	//counts the number of sets completed
+	SetsCount++;    
+	//if less than 4 sets completed, start short break
+	if (SetsCount < 4) { 
 		startShortBreak();
 	}
+	//if 4 sets completed, start long break
 	else {
-		startLongBreak();
+		startLongBreak();	
 		SetsCount = 0; 
 	}
 
 }
+//stop function from base class Timer implemented here
+void Pomodoro::stop() {
+	isRunning = false;
+	std::cout << "Pomodoro session stopped.\n";
+}
+//runsesson takes duration and label as parameters
 void Pomodoro::runSession(int8_t duration, std::string label) {
 	isRunning = true;
-	auto startTime = std::chrono::steady_clock::now();
+	auto startTime = std::chrono::steady_clock::now(); //curret time is stored in startTime variable
 	std::cout << label << " for " << static_cast<int>(duration) << " minutes.\n";
-	while (isRunning) {
-		auto currentTime = std::chrono::steady_clock::now();
-		auto elapsed = std::chrono::duration_cast<std::chrono::minutes>(currentTime - startTime).count();
+	while (isRunning) { 
+		auto currentTime = std::chrono::steady_clock::now(); // check new time in loop 
+		auto elapsed = std::chrono::duration_cast<std::chrono::minutes>(currentTime - startTime).count(); //subtract start time from current time to get duration of time
 		if (elapsed >= duration) {
-			isRunning = false;
+			isRunning = false;       
 		}
 	}
 	std::cout << label << " session completed!\n";
