@@ -1,3 +1,4 @@
+
 #ifndef POMODORO_H
 #define POMODORO_H
 #pragma once
@@ -28,3 +29,4 @@ public:
 	int8_t getSetsCount() const { return SetsCount; }
 };
 #endif // POMODORO_H
+

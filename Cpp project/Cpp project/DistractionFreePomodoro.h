@@ -2,15 +2,23 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <set>
 #include <string>
 #include "pomodoro.h"
-
+#include "WebsiteBlocker.h"
 class DistractionFreePomodoro : public Pomodoro {
 private:
 	//takes list of distracting apps as input 
 	std::vector<std::string> blockedApps;
 	bool isActive;
 
+	WebsiteBlocker websiteBlocker;
+	std::set<std::string> websitesToBlock = {
+		"www.youtube.com",
+		"www.instagram.com",
+		"twitter.com",
+		"facebook.com"
+	};
 	bool IsAppRunning(const std::string& appName);
 
 public:

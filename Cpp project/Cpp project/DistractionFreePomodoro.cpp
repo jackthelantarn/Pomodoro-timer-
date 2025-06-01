@@ -32,22 +32,36 @@ void DistractionFreePomodoro::runSession(int8_t duration, std::string label) {
 	isRunning = true;
 	auto startTime = std::chrono::steady_clock::now();
 	std::cout << label << " for " << static_cast<int>(duration) << " minutes.\n";
-
+	if (label == "Focus") {
+		std::cout << "[System] Blocking websites...\n";
+		for (const auto& site : websitesToBlock) {
+			websiteBlocker.blockWebsite(site);
+		}
+	}
+	else {
+		std::cout << "[System] Unblocking websites...\n";
+		for (const auto& site : websitesToBlock) {
+			websiteBlocker.unblockWebsite(site);
+			std::cout << "[System] " << site << " has been unblocked.\n";
+		}
+		std::cout << "[System] Websites unblocked.\n";
+	}
 	while (isRunning) {
 		std::this_thread::sleep_for(std::chrono::seconds(5)); // check every 5sec for blcoked apps
 		//check if distracting application from list is found running 
 		//if distracting application is running then terminate it
-		for (const auto& app : blockedApps) {
-			if (IsAppRunning(app)) {
-				std::cout << "Blocked app detected: " << app << " � Terminating...\n";
-				std::string command = "taskkill /IM " + app + " /F >nul 2>&1";
-				system(command.c_str());
-				std::cout << app << " has been terminated.\n";
-				//Messebox to notify user that distracting app is detected
-				MessageBox(NULL, TEXT("Please stay focus on your work!"), TEXT("DISTRACTING APP DETECTED!"), MB_OK | MB_ICONINFORMATION);
+		if(label == "Focus"){ 
+			for (const auto& app : blockedApps) {
+				if (IsAppRunning(app)) {
+					std::cout <<"Blocked app detected: " << app <<" Terminating...\n";
+					std::string command = "taskkill /IM " + app + " /F >nul 2>&1";
+					system(command.c_str());
+					std::cout << app << " has been terminated.\n";
+					//Messebox to notify user that distracting app is detected
+					MessageBox(NULL, TEXT("Please stay focus on your work!"), TEXT("DISTRACTING APP DETECTED!"), MB_OK | MB_ICONINFORMATION);
+				}
 			}
 		}
-
 		auto currentTime = std::chrono::steady_clock::now();
 		auto elapsed = std::chrono::duration_cast<std::chrono::minutes>(currentTime - startTime).count();
 		if (elapsed >= duration) {
