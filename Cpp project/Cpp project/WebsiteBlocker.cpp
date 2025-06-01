@@ -42,6 +42,8 @@ void WebsiteBlocker::blockWebsite(const std::string& website) {
         file << "127.0.0.1 " << website << "\n";
         blockedWebsites.insert(website);  
         std::cout << "Blocked: " << website << "\n";
+		system("ipconfig /flushdns"); // Flush DNS cache to apply changes immediately
+
     }
     else {
         std::cerr << "Failed to open hosts file. Run as administrator.\n";
