@@ -19,10 +19,12 @@ private:
 		"twitter.com",
 		"facebook.com"
 	};
+
 	bool IsAppRunning(const std::string& appName);
 
 public:
-	DistractionFreePomodoro(int8_t focusDuration, int8_t shortBreakDuration, int8_t longBreakDuration,
+	//Constructor with default pomodoro timer value
+	DistractionFreePomodoro(int8_t focusDuration=25, int8_t shortBreakDuration=5, int8_t longBreakDuration=15,
 		const std::vector<std::string>& appstoBlock);
 
 	~DistractionFreePomodoro() = default;

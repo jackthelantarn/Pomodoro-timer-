@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib> // for remove(), rename()
-
+using namespace std;
 WebsiteBlocker::WebsiteBlocker(const std::string& path)
     : hostsFilePath(path) {
 }

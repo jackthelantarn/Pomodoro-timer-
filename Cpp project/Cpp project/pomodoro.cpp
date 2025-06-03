@@ -1,6 +1,10 @@
+
 #include "pomodoro.h"
 #include<Windows.h>
-#pragma comment(lib, "winmm.lib")  
+#pragma comment(lib, "winmm.lib")  //linking winmm.lib for PlaySound function
+#include <iostream>
+
+using namespace std;
 Pomodoro::Pomodoro(int8_t focusDuration, int8_t shortBreakDuration, int8_t longBreakDuration)
 	:FocusDuration(focusDuration), ShortBreakDuration(shortBreakDuration),
 	LongBreakDuration(longBreakDuration), SetsCount(0) {
