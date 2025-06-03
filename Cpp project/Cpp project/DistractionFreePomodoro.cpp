@@ -11,11 +11,7 @@ DistractionFreePomodoro::DistractionFreePomodoro(int8_t focusDuration, int8_t sh
 	const std::vector<std::string>& appstoBlock)
 	: Pomodoro(focusDuration, shortBreakDuration, longBreakDuration), blockedApps(appstoBlock), isActive(false) {
 }
-//Default value for pomodoro timer
-DistractionFreePomodoro::DistractionFreePomodoro(int8_t focusDuration=25, int8_t shortBreakDuration=5, int8_t longBreakDuration=15,
-	const std::vector<std::string>& appstoBlock)
-	: Pomodoro(focusDuration, shortBreakDuration, longBreakDuration), blockedApps(appstoBlock), isActive(false) {
-}
+
 
 bool DistractionFreePomodoro::IsAppRunning(const std::string& appName) {
 	//get the list of running apps in a text file

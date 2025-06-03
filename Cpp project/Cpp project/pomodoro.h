@@ -14,7 +14,7 @@ protected:
 	int8_t LongBreakDuration;
 	int8_t SetsCount;
 public:
-	Pomodoro(int8_t focusDuration=25, int8_t shortBreakDuration=5, int8_t longBreakDuration=15);
+	Pomodoro(int8_t focusDuration, int8_t shortBreakDuration, int8_t longBreakDuration);
 
 	~Pomodoro() {}
 

@@ -24,8 +24,8 @@ private:
 
 public:
 	//Constructor with default pomodoro timer value
-	DistractionFreePomodoro(int8_t focusDuration=25, int8_t shortBreakDuration=5, int8_t longBreakDuration=15,
-		const std::vector<std::string>& appstoBlock);
+	DistractionFreePomodoro(int8_t focusDuration = 25, int8_t shortBreakDuration = 5, int8_t longBreakDuration = 15,
+		const std::vector<std::string>& appstoBlock = {});
 
 	~DistractionFreePomodoro() = default;
 
